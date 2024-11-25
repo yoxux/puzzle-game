@@ -1,0 +1,20 @@
+{
+  "name": "puzzle",
+  "version": "1.0.0",
+  "description": "Puzzle game",
+  "private": true,
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "author": "Jiayi Zhan",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1",
+    "pug": "^3.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}
