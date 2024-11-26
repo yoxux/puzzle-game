@@ -2,7 +2,20 @@ doctype html
 html
   head
     title Puzzle
-    link(rel='stylesheet', href='/stylesheets/style.css')
+
+    link(rel='icon' type='image/png' href='/images/favicon-96x96.png' sizes='96x96')
+    link(rel='icon' type='image/svg+xml' href='/images/favicon.svg')
+    link(rel='shortcut icon' href='/images/favicon.ico')
+    link(rel='apple-touch-icon' sizes='180x180' href='/images/apple-touch-icon.png')
+    link(rel='manifest' href='/images/site.webmanifest')
+
+    link(rel="stylesheet", href="/stylesheets/reset.css")
+    link(rel='stylesheet', href='/stylesheets/global.css')
+
   body
     block content
+    script(src='https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js')
+    script(src='https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js')
+    script(src='https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Draggable.min.js')
+
     

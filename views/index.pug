@@ -1,5 +1,8 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  h3 Seleziona un immagine per iniziare
+  div.image-container 
+    img(src="/images/loading.gif", alt="loading...")
+  button#play(type="button") Conferma
+  script(src="/javascripts/index.js" defer) 
