@@ -1,14 +1,6 @@
 /**
  * @typedef {import("jquery")} $
- * @typedef {import("gsap")} gsap
- * @typedef {import("gsap/Draggable")} Draggable
  */
-
-gsap.registerPlugin(Draggable);
-
-const body = document.body;
-const select = (e) => document.querySelector(e);
-const selectAll = (e) => document.querySelectorAll(e);
 
 initScripts();
 

@@ -1,4 +1,7 @@
 extends layout
 
 block content
-  h1 playing puzzle
+  img(id="puzzle-image" src=`${imageUrl}` style="display: none; object-fit: cover" tabindex="-1" aria-hidden="true")
+  .pieces-container 
+  .grid 
+  script(src="/javascripts/play.js" defer) 

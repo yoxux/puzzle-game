@@ -32,3 +32,11 @@ button {
 .image-container .image.active {
   border: 3px solid rgb(87, 199, 35);
 }
+
+.pieces-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  width: 500px;
+}
+.pieces-container img { width: 100%; height: auto;}
