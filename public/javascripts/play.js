@@ -11,15 +11,15 @@ const body = document.body;
 const select = (e) => document.querySelector(e);
 const selectAll = (e) => document.querySelectorAll(e);
 
+// Modify rowCount and colCount to adjust game difficulty
 var puzzleImage = {
   ref: null,
   rowCount: 4,
   colCount: 4,
 };
-var draggableCollection = Array(puzzleImage.rowCount)
-  .fill()
-  .map((_) => Array(puzzleImage.colCount).fill());
+var draggableCollection = Array(puzzleImage.rowCount * puzzleImage.colCount);
 var overlappedCell = null;
+var correctlyPlacedPieces = 0;
 
 initScripts();
 
@@ -82,13 +82,21 @@ function splitPieces() {
             order: `${randomSequence[row * rowCount + col]}`,
           });
 
-        draggableCollection[row][col] = Draggable.create(piece, {
+        draggableCollection[row * rowCount + col] = Draggable.create(piece, {
           bounds: "body",
           onDrag: function () {
             if ($(this.target).hasClass("down")) {
               const id = $(this.target).attr("cell");
               $(this.target).attr("cell", "").removeClass("down");
               $(`#${id}`).removeClass("occupied");
+
+              if (
+                $(this.target).attr("col") === $(`#${id}`).attr("col") &&
+                $(this.target).attr("row") === $(`#${id}`).attr("row")
+              ) {
+                correctlyPlacedPieces -= 1;
+                console.log("Correct pieces:", correctlyPlacedPieces);
+              }
             }
             movePiece(this.target);
           },
@@ -126,7 +134,6 @@ function movePiece(piece) {
 
 function pieceDown(piece, row, col) {
   if (!overlappedCell) return;
-  console.log("down");
 
   $(overlappedCell).removeClass("overlap").addClass("occupied");
 
@@ -137,6 +144,20 @@ function pieceDown(piece, row, col) {
     })
     .addClass("down")
     .attr("cell", $(overlappedCell).attr("id"));
+
+  if (
+    $(piece).attr("col") === $(overlappedCell).attr("col") &&
+    $(piece).attr("row") === $(overlappedCell).attr("row")
+  ) {
+    correctlyPlacedPieces += 1;
+    console.log("Correct pieces:", correctlyPlacedPieces);
+  }
+
+  if (correctlyPlacedPieces === puzzleImage.colCount * puzzleImage.rowCount) {
+    draggableCollection.forEach(([draggable]) => draggable.kill());
+    gsap.set(".win", { display: "flex" });
+    gsap.to([".win h2", ".win a"], { y: 0, opacity: 1 });
+  }
 }
 
 function checkOverlap(piece) {
