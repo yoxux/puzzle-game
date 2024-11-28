@@ -2,6 +2,8 @@ extends layout
 
 block content
   img(id="puzzle-image" src=`${imageUrl}` style="display: none; object-fit: cover" tabindex="-1" aria-hidden="true")
+  h1 Trascina i pezzi nel posto giusto
   .pieces-container 
   .grid 
+  script(src="/javascripts/PieceLocation.js") 
   script(src="/javascripts/play.js" defer) 

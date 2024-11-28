@@ -10,6 +10,12 @@ body {
   padding: 2rem;
 }
 
+h1 {
+  font-size: 2rem;
+  padding: 1rem 0;
+  text-align: center;
+}
+
 h3 {
   font-size: 1.25rem;
 }
@@ -34,9 +40,29 @@ button {
 }
 
 .pieces-container {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-bottom: 5rem;
+}
+.pieces-container img {
+}
+
+.grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-  width: 500px;
+  width: min(65vw, 40vh);
+  border: 1px solid gray;
+  margin: auto;
+  position: relative;
 }
-.pieces-container img { width: 100%; height: auto;}
+.grid .cell {
+  width: 100%;
+  aspect-ratio: 1;
+  border: 1px solid gray;
+  transition: border 100ms;
+}
+.grid .cell.overlap {
+  border: 2px solid aqua;
+}
